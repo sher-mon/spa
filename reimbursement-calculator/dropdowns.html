@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- https://github.com/sher-mon -->
+		<title>Dropdowns</title>
+		<meta name="description" content="Dropdowns">
+		<meta charset="utf-8">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+		<script>
+		$(document).ready(function(){
+			jQuery("ul.select-interface li").click(function(){
+				var ul_status = jQuery(this).parent().attr("data-status");
+				var model_li_height = jQuery(this).parent().children("li:first-of-type").height();
+				var model_li_width = jQuery(this).parent().children("li:first-of-type").width();
+				var model_li_padding = parseInt(jQuery(this).parent().children("li:first-of-type").css("padding-top"),10);
+				var expand_from_position = (model_li_height+(model_li_padding*2));
+				if (ul_status == "closed")
+				{
+					//Keep the current select interface on top regardless of its DOM position
+					jQuery("ul.select-interface").css("z-index", 0);
+					jQuery("ul.select-interface li").css("z-index", 0);
+					jQuery(this).parent().css("z-index", 100);
+
+					//Position the select interface options so that they expand out just below the leading (0 index) informative li
+					jQuery(this).parent().children("li:not(:first-of-type)").css("top", expand_from_position);
+
+					//Close any other select interfaces to focus attention on current input 
+					jQuery("ul.select-interface").attr("data-status", "closed");
+					jQuery(this).parent().attr("data-status", "open");
+					
+					//Expose select interface options
+					jQuery(this).parent().children("li").each(function(){
+						var li_value = jQuery(this).data("value");
+						var li_border = parseInt(jQuery(this).css("border-bottom-width"),10);
+						var animate_top = li_value*(model_li_height+(model_li_padding*2)+li_border)+"px";
+						jQuery(this).css("width", model_li_width+"px");
+						jQuery(this).css("z-index", li_value);
+						jQuery(this).animate({top: animate_top}, 300);
+					});
+				}
+				if (ul_status == "open")
+				{
+					var data_input_id = jQuery(this).parent().data("connect");
+					jQuery("#"+data_input_id).val(jQuery(this).data("value"));
+					jQuery(this).parent().children("li").removeClass();
+					jQuery(this).addClass("selected");
+
+					jQuery(this).parent().children("li:not(:first-of-type)").animate({top: expand_from_position}, 100, function(){
+						jQuery(this).parent().attr("data-status", "closed");
+					});
+					//Bring the selected option to the top
+					jQuery("ul.select-interface li.selected").animate({top: 0}, 100);
+				}
+			});
+		});
+		</script>		
+		<style type="text/css">
+		/* CSS Reset */
+		html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-collapse:collapse;border-spacing:0}
+		/* Clearfix */
+		.clear:before, .clear:after {content: " "; display: table;}
+		.clear:after {clear: both;}
+		/* Preferred box sizing  */
+		html {box-sizing: border-box;}
+		*, *:before, *:after {box-sizing: inherit;}
+		body {position: relative; font-family: "Helvetica Neue"; color: #222328; padding: 20px 0;}
+		#container {position: relative; width: 80%; min-width: 420px; max-width: 650px; margin: 10px auto;}
+		h1 {font-size: 24px; font-weight: bold; text-align: center;}
+		ul.select-interface {position: relative; width: 100%; margin: 0 auto;}
+		ul.select-interface > li {position: absolute; top: 0; background: #fff; border-bottom: 1px solid #ccc; padding: 20px 0; font-size: 26px; text-indent: 10px; cursor: pointer; transition: background-color .3s, color .3s; -webkit-transition: background-color .3s, color .3s; -moz-transition: background-color .3s, color .3s;}
+		ul.select-interface > li:first-of-type, ul.select-interface[data-status="closed"] > li.selected {position: relative;}
+		ul.select-interface[data-status="closed"] > li.selected {background-color: #eee;}
+		ul.select-interface[data-status="closed"] > li[data-value="0"].selected {background-color: #fff;}
+		ul.select-interface[data-status="closed"] > li {display: none;}
+		ul.select-interface[data-status="open"] > li {display: block !important; border-left: 1px solid #444; border-right: 1px solid #444;}
+		ul.select-interface[data-status="open"] > li:first-of-type {border-bottom: 1px solid #444; background-color: #555; color: #fff;} 
+		ul.select-interface[data-status="open"] > li:last-of-type {border-bottom: 1px solid #000;}
+		ul.select-interface > li:hover {background-color: #eee;}
+		ul.select-interface[data-status="closed"] > li[data-value="0"]:hover {background-color: #fff;}
+		ul.select-interface > li.selected {display: block;}
+		ul.select-interface > li span.dropdown-arrow {position: absolute; top: 20px; right: 40px; transition: .4s; -webkit-transition: .4s; -moz-transition: .4s;}
+		ul.select-interface[data-status="open"] > li span.dropdown-arrow {transform: rotate(90deg); -webkit-transform: rotate(90deg); -moz-transform: rotate(90deg);}
+		select.select-interface-linked {display: none;}
+		</style>
+	</head>
+	<body>
+		<h1>Interface Dropdowns</h1>
+		<div id="container">
+			<select id="product-type" class="select-interface-linked">
+				<option value="0" selected>Type of product</option>
+				<option value="1">Tomato</option>
+				<option value="2">Potato</option>
+			</select>
+			<ul id="product-type-select-interface" class="select-interface" data-status="closed" data-connect="product-type">
+				<li data-value="0" class="selected">Type of product<span class="dropdown-arrow"><img src="images/dropdown-arrow.png"></span></li>
+				<li data-value="1">Tomato</li>
+				<li data-value="2">Potato</li>
+			</ul>
+			<select id="reimbursement-type" class="select-interface-linked">
+				<option value="0" selected>Type of reimbursement</option>
+				<option value="1">Spoilage</option>
+				<option value="2">Inadequate Appearance</option>
+				<option value="3">Cancelled Order</option>
+			</select>
+			<ul id="reimbursement-type-select-interface" class="select-interface" data-status="closed" data-connect="reimbursement-type">
+				<li data-value="0" class="selected">Type of reimbursement<span class="dropdown-arrow"><img src="images/dropdown-arrow.png"></span></li>
+				<li data-value="1">Spoilage</li>
+				<li data-value="2">Inadequate Appearance</li>
+				<li data-value="3">Cancelled Order</li>
+			</ul>
+		</div>
+	</body>
+</html>

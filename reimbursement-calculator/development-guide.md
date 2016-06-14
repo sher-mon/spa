@@ -1,5 +1,5 @@
 # Reimbursement Calculator Development Guide
-*A single page application to help produce venders calculating reimbursements to buyers*
+*A single page application to help produce vendors calculate reimbursements to buyers*
 
 ### Code Spec
 + HTML (HAML)
@@ -12,7 +12,7 @@
 ### Components
 - Swivel Interface [Done]
 - Icons & Buttons [Done]
-- Dropdowns [Todo]
+- Dropdowns [Done]
 - Text inputs [Todo]
 - Explanation/Detail [Todo]
 
