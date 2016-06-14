@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- https://github.com/sher-mon -->
+		<title>Interface Icons &amp; Buttons</title>
+		<meta name="description" content="Interface Icons/Buttons">
+		<meta charset="utf-8">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+		<script>
+		$(document).ready(function(){
+			jQuery("#settings-gear").click(function(){
+				jQuery("#settings-gear").toggleClass("selected");
+			});
+		});
+		</script>		
+		<style type="text/css">
+		/* CSS Reset */
+		html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-collapse:collapse;border-spacing:0}
+		/* Clearfix */
+		.clear:before, .clear:after {content: " "; display: table;}
+		.clear:after {clear: both;}
+		/* Preferred box sizing  */
+		html {box-sizing: border-box;}
+		*, *:before, *:after {box-sizing: inherit;}
+		body {position: relative; font-family: "Helvetica Neue"; color: #222; padding: 20px 0;}
+		#container {position: relative; width: 80%; min-width: 420px; max-width: 650px; margin: 10px auto;}
+		h1 {font-size: 24px; font-weight: bold; text-align: center;}
+		button:focus {outline:0;} /* Remove outline from Chrome buttons */
+		#logo {display: block; width: 50px; height: 50px; margin: 0 auto 12px;}
+		#logo img {width: 100%;}
+		#logo.reversed {transform: rotateY(180deg); -webkit-transform: rotateY(180deg); -moz-transform: rotateY(180deg);}
+		#settings-gear {display: block; position: absolute; top: 10px; right: 5px; width: 30px; height: 30px; background-color: transparent; border: 0; padding: 0; cursor: pointer; transition: 0.6s; -webkit-transition: 0.6s; z-index: 1;}
+		#settings-gear.selected {transform: rotate(70deg); -webkit-transform: rotate(70deg); -moz-transform: rotate(70deg);}
+		#settings-gear img {width: 100%;}
+		#back-button {display: block; position: absolute; top: 3px; left: 3px; width: 35px; height: 35px; background-color: transparent; border: 0; padding: 0; cursor: pointer; transition: 0.4s; -webkit-transition: 0.4s;}
+		#back-button:hover {transform: scale(1.1); -webkit-transform: scale(1.1);}
+		#back-button img {width: 100%;}
+		#add-product {display: block; width: 100px; border: 2px solid #039; background-color: #06c; border-radius: 4px; color: #fff; padding: 6px 15px; text-align: center; margin: 4px auto; font-size: 16px; cursor: pointer;}
+		#add-product:hover {background-color: #039;}
+		#reimbursement-add {display: block; border: 2px solid #063; background-color: #096; border-radius: 4px; color: #fff; padding: 2px 20px; text-align: center; margin: 4px auto; font-size: 16px; cursor: pointer;}
+		#reimbursement-add:hover {background-color: #063;}
+		#calculate {display: block; width: 100%; border: 2px solid #039; background-color: #06c; border-radius: 6px; color: #fff; padding: 20px; text-align: center; margin: 30px auto; font-size: 19px; cursor: pointer;}
+		#calculate:hover {background-color: #039; color: #fff;}
+		</style>
+	</head>
+	<body>
+		<h1>Interface Icons &amp; Buttons</h1>
+		<div id="container">
+			<a id="logo" href="#"><img src="images/logo-button.png"></a>
+			<a id="logo" class="reversed" href="#"><img src="images/logo-button.png"></a>
+			<button id="settings-gear"><img src="images/settings-gear.png"></button>
+			<button id="back-button"><img src="images/back-button.png"></button>
+			<button id="add-product">Add</button>
+			<button id="reimbursement-add">Add</button>
+			<button id="calculate">Calculate</button>
+			<div><img src="images/add-data-icon.png"></div>
+		</div>
+	</body>
+</html>

@@ -10,8 +10,8 @@
 ## Development Checklist
 
 ### Components
-- Swivel Interface [Todo]
-- Icons & Buttons [Todo]
+- Swivel Interface [Done]
+- Icons & Buttons [Done]
 - Dropdowns [Todo]
 - Text inputs [Todo]
 - Explanation/Detail [Todo]
