@@ -1,4 +1,4 @@
-# Reimburse Calculator Development Guide
+# Reimbursement Calculator Development Guide
 *A single page application to help produce venders calculating reimbursements to buyers*
 
 ### Code Spec

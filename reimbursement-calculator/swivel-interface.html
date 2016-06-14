@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- https://github.com/sher-mon -->
+    <meta name="description" content="Front End Development">
+	<meta charset="utf-8">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+	<title>Swivel Interface</title>
+	<script>
+	$(document).ready(function() {
+		jQuery("button").click(function(){
+			jQuery(".swivel-panel").toggleClass("show-results");
+		});
+	});
+	</script>
+	<style type="text/css">
+		/* CSS Reset */
+		html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-collapse:collapse;border-spacing:0}
+		/* Clearfix */
+		.clear:before, .clear:after {content: " "; display: table;}
+		.clear:after {clear: both;}
+		/* Preferred box sizing  */
+		html {box-sizing: border-box;}
+		*, *:before, *:after {box-sizing: inherit;}
+		body {position: relative; font-family: "Helvetica Neue"; color: #222; padding: 20px 0;}
+		#container {position: relative; width: 80%; min-width: 420px; max-width: 650px; margin: 10px auto; text-align: center;}
+		h1 {font-size: 24px; font-weight: bold; text-align: center;}
+		button {text-align: center;}
+		.swivel-panel {perspective: 800; -webkit-perspective: 800; -moz-perspective: 800; -moz-transform: perspective(800px); -moz-transform-style: preserve-3d; -ms-transform: perspective(800px); -ms-transform-style: preserve-3d; -ms-perspective: 800; margin: 0 auto;}
+		.swivel-panel.show-results .swivel {transform: rotateY(180deg); -webkit-transform: rotateY(180deg); -moz-transform: rotateY(180deg); -ms-transform: rotateY(180deg);}
+		.swivel-panel, .calculator, .results {width: 320px; height: 427px;}
+		.swivel {position: relative; transition: 0.6s; transform-style: preserve-3d; -webkit-transition: 0.6s; -webkit-transform-style: preserve-3d; -moz-transition: 0.6s; -moz-transform: perspective(800px); -moz-transform-style: preserve-3d; -ms-transform-style: preserve-3d;
+			-ms-transition: 0.6s;}
+		.calculator, .results {position: absolute; top: 0; left: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; -moz-backface-visibility: hidden; -ms-backface-visibility: hidden; transition: 0.6s; transform-style: preserve-3d; transform: rotateY(0deg); -webkit-transition: 0.6s; -webkit-transform-style: preserve-3d; -webkit-transform: rotateY(0deg); -moz-transition: 0.6s; -moz-transform-style: preserve-3d; -moz-transform: rotateY(0deg); -ms-transition: 0.6s; -ms-transform-style: preserve-3d; -ms-transform: rotateY(0deg);}
+		.calculator {transform: rotateY(0deg); -webkit-transform: rotateY(0deg); -moz-transform: rotateY(0deg); -ms-transform: rotateY(0deg);background: #06c; z-index: 2;}
+		.results {background: #ccf; transform: rotateY(-180deg); -webkit-transform: rotateY(-180deg); -moz-transform: rotateY(-180deg); -ms-transform: rotateY(-180deg);}
+	</style>
+</head>
+<body>
+	<h1>Swivel Interface</h1>
+	<div id="container">
+		<button>swivel</button>
+		<div class="swivel-panel">
+			<div class="swivel">
+				<div class="calculator"></div>
+				<div class="results"></div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
