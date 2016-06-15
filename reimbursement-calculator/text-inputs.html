@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- https://github.com/sher-mon -->
+		<title>Interface Text Inputs</title>
+		<meta name="description" content="Interface Text Inputs">
+		<meta charset="utf-8">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+		<script>
+		$(document).ready(function(){
+			jQuery(".slide-text-input label").click(function(){
+				jQuery(this).parent().children("input").focus();
+			});
+			jQuery(".slide-text-input input").blur(function(){
+				if (jQuery(this).parent().hasClass("numerical-only"))
+				{
+					if (parseInt(jQuery(this).val(),10) >= 0)
+					{
+						jQuery(this).addClass("maintain-input-position");
+						jQuery(this).parent().children("label").children("span.add-data").remove();
+					}
+					else
+					{
+						jQuery(this).val("");
+						jQuery(this).removeClass("maintain-input-position");
+					}
+				}
+				else
+				{
+					jQuery(this).addClass("maintain-input-position");
+				}
+			});
+		});
+		</script>		
+		<style type="text/css">
+		/* CSS Reset */
+		html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-collapse:collapse;border-spacing:0}
+		/* Clearfix */
+		.clear:before, .clear:after {content: " "; display: table;}
+		.clear:after {clear: both;}
+		/* Preferred box sizing  */
+		html {box-sizing: border-box;}
+		*, *:before, *:after {box-sizing: inherit;}
+		body {position: relative; font-family: "Helvetica Neue"; color: #222328; padding: 20px 0;}
+		#container {position: relative; width: 80%; min-width: 420px; max-width: 650px; margin: 10px auto;}
+		h1 {font-size: 24px; font-weight: bold; text-align: center;}
+		.slide-text-input {display: block; position: relative; width: 100%; height: 60px; overflow: hidden; border-bottom: 1px solid #ccc; margin: 0 auto;}
+		.slide-text-input input {display: block; float: left; width: 160px; height: 60px; padding-left: 10px; margin-left: -160px; margin-right: 10px; font-size: 24px; transition: .2s; -webkit-transition: .2s; -moz-transition: .2s; outline: 0; border: 0;}
+		.slide-text-input input:focus {margin-left: 0px;}
+		.slide-text-input input.maintain-input-position {margin-left: 0px !important;}
+		.slide-text-input label {display: block; width: 100%; height: 60px; padding: 16px 0; font-size: 24px; background-color: #fff; cursor: pointer;}
+		.slide-text-input input:focus + label, .slide-text-input input.maintain-input-position + label {background-color: #eee;}
+		</style>
+	</head>
+	<body>
+		<h1>Interface Text Inputs</h1>
+		<div id="container">
+			<div class="slide-text-input numerical-only">
+				<input id="shipment-weight" name="shipment-weight" type="text" pattern="\d*" placeholder="Ex. 400"/>
+				<label>
+					<span class="description">Shipment Weight</span>
+					<span class="unit">(kg)</span>
+				</label>
+			</div>
+			<div class="slide-text-input numerical-only">
+				<input id="unit-price" name="unit-price" type="text" pattern="\d*" placeholder="Ex. 50.99"/>
+				<label>
+					<span class="description">Unit Price</span>
+					<span class="unit">($)</span>
+				</label>
+			</div>
+			<div class="slide-text-input numerical-only">
+				<input id="scenario" name="scenario" type="text" pattern="\d*" placeholder="Ex. 15"/>
+				<label>
+					<span class="description">Scenario</span>
+					<span class="unit">(%)</span>
+				</label>
+			</div>
+		</div>
+	</body>
+</html>

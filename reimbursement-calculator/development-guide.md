@@ -13,7 +13,7 @@
 - Swivel Interface [Done]
 - Icons & Buttons [Done]
 - Dropdowns [Done]
-- Text inputs [Todo]
+- Text inputs [Done]
 - Explanation/Detail [Todo]
 
 ### Application
