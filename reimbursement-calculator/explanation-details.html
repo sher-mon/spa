@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- https://github.com/sher-mon -->
+		<title>Explanation &amp; Details</title>
+		<meta name="description" content="Explanation/Details">
+		<meta charset="utf-8">		
+		<style type="text/css">
+		/* CSS Reset */
+		html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-collapse:collapse;border-spacing:0}
+		/* Clearfix */
+		.clear:before, .clear:after {content: " "; display: table;}
+		.clear:after {clear: both;}
+		/* Preferred box sizing  */
+		html {box-sizing: border-box;}
+		*, *:before, *:after {box-sizing: inherit;}
+		body {position: relative; font-family: "Helvetica Neue"; color: #222328; padding: 20px 0;}
+		#container {width: 80%; min-width: 420px; max-width: 650px; margin: 10px auto;}
+		a {text-decoration: none; color: #5cafff;}
+		p {text-align: left;}
+		h1 {font-size: 24px; font-weight: bold; text-align: center;}
+		#explanation {font-size: 24px; line-height: 28px; margin: 20px 0 50px;}
+		#explanation .highlight {color: #4d9dff;}
+		#explanation #reimbursement-total {color: #66a442;}
+		#details {color: #a1a6bb; font-size: 17px; border-top: 1px solid #eee; padding: 50px 0 100px;}
+		#details p {text-align: center;}
+		#details h3 {text-align: center; font-weight: bold;}
+		</style>
+	</head>
+	<body>
+		<h1>Explanation &amp; Details</h1>
+		<div id="container">
+			<div id="explanation">
+				<p>
+					Product: <span class="explanation-product highlight">tomato</span><br/>
+					Reimbursement type: <span class="explanation-reason highlight">spoilage</span><br/>
+					Scenario: <span class="explanation-scenario highlight">13.5%</span><br/>
+					Shipment Weight: <span class="explanation-shipment-weight highlight">230kg</span><br/>
+					Unit price: <span class="explanation-unit-price highlight">$16/kg</span>
+				</p>
+				<p>
+					Reimbursement total: <span id="reimbursement-total">$x,xxx.xx</span>
+				</p>
+			</div>
+			<div id="details">
+				<h3>Explanation</h3>
+				<p class="details">
+					Maximum allowed <span class="explanation-reason">spoilage</span> for <span class="explanation-product">tomatos</span> is <span class="explanation-allowance">5%</span>.<br>
+					Reimburse <span class="explanation-beyond">50%</span> of any amount that exceeds the <span class="explanation-reason">spoilage</span> allowance.
+				</p>
+			</div>
+		</div>
+	</body>
+</html>
