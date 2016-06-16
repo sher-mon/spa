@@ -1,5 +1,8 @@
 $(document).ready(function(){
-	//Clear previous form data
+	/* Populate initial data via JSON */
+	PopulateProductList();
+
+	/* Clear previous form data */
 	jQuery("#fields input").val("");
 
 	/* Add Product */
@@ -29,7 +32,7 @@ $(document).ready(function(){
 		});
 	});
 
-	/* Dropdown Menus */
+	/* Dropdowns */
 	jQuery("ul.select-interface li").click(function(){
 		var ul_status = jQuery(this).parent().attr("data-status");
 		var model_li_height = jQuery(this).parent().children("li:first-of-type").height();

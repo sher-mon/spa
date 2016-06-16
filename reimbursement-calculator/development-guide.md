@@ -14,21 +14,21 @@
 - Icons & Buttons [Done]
 - Dropdowns [Done]
 - Text inputs [Done]
-- Explanation/Detail [Todo]
+- Explanation/Detail [Done]
 
 ### Application
-- HTML Markup [Todo]
-- Produce/reimbursement initial data [Todo]
-- Calculator Functionality [Todo]
- + Populate initial data [Todo]
- + Add additional products/reimbursement criteria [Todo]
- + Calculate reimbursement [Todo]
- + Populate explanation/details [Todo]
- + Format price [Todo]
+- HTML Markup [Done]
+- Produce/reimbursement initial data [Done]
+- Calculator Functionality [Done]
+ + Populate initial data [Done]
+ + Add additional products/reimbursement criteria [Done]
+ + Calculate reimbursement [Done]
+ + Populate explanation/details [Done]
+ + Format price [Done]
 - React [Todo]
 
 ### Responsive Design
-- Provide simple, lightweight tweaks for mobile/tablet
+- Provide simple, lightweight tweaks for mobile/tablet [Todo]
 
 ### Dashboard
 - Project Name [Todo]
