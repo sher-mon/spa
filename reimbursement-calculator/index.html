@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- https://github.com/sher-mon -->
+		<title>Reimbursement Calculator</title>
+		<meta name="description" content="Reimbursement Calculator"/>
+		<meta charset="utf-8"/>
+		<link rel="stylesheet" type="text/css" href="css/layout.css">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+		<script src="js/init.js"></script>
+	</head>
+	<body>
+		<div id="container">
+			<div class="swivel-panel">
+				<div class="swivel">
+					<div class="calculator">
+						<a id="logo" href="http://mshermandevelopment.com"><img src="images/logo-button.png"></a>
+						<h1>Reimbursement Calculator</h1>
+						<div id="admin-panel">
+							<div id="add-product-panel">
+								<p>Add a new product</p>
+								<input id="new-product-type" name="new-product-type" type="text" placeholder="Ex. Uni"/>
+								<button id="add-product">Add</button>
+							</div>
+							<ul id="product-list"></ul>
+						</div>
+						<h2>Details</h2>
+						<button id="settings-gear"><img src="images/settings-gear.png"></button>
+						<ul id="fields">
+							<li id="field-product-type" class="field">
+								<select id="product-type" class="select-interface-linked">
+									<option value="0" selected>Type of product</option>
+									<option value="1">Tomato</option>
+									<option value="2">Potato</option>
+								</select>
+								<ul id="product-type-select-interface" class="select-interface" data-status="closed" data-connect="product-type">
+									<li data-value="0" class="selected">Type of product<span class="dropdown-arrow"><img src="images/dropdown-arrow.png"></span></li>
+									<li data-value="1">Tomato</li>
+									<li data-value="2">Potato</li>
+								</ul>
+							</li>
+							<li id="field-reimbursement-type" class="field">
+								<select id="reimbursement-type" class="select-interface-linked">
+									<option value="0" selected>Type of reimbursement</option>
+									<option value="1">Spoilage</option>
+									<option value="2">Inadequate Appearance</option>
+									<option value="3">Cancelled Order</option>
+								</select>
+								<ul id="reimbursement-type-select-interface" class="select-interface" data-status="closed" data-connect="reimbursement-type">
+									<li data-value="0" class="selected">Type of reimbursement<span class="dropdown-arrow"><img src="images/dropdown-arrow.png"></span></li>
+									<li data-value="1">Spoilage</li>
+									<li data-value="2">Inadequate Appearance</li>
+									<li data-value="3">Cancelled Order</li>
+								</ul>
+							</li>
+							<li id="field-shipment-weight" class="field">
+								<div class="slide-text-input numerical-only">
+									<input id="shipment-weight" name="shipment-weight" type="text" pattern="\d*" placeholder="Ex. 400"/>
+									<label>
+										<span class="description">Shipment Weight</span>
+										<span class="unit">(kg)</span>
+									</label>
+								</div>
+							</li>
+							<li id="field-unit-price" class="field">
+								<div class="slide-text-input numerical-only">
+									<input id="unit-price" name="unit-price" type="text" pattern="\d*" placeholder="Ex. 50"/>
+									<label>
+										<span class="description">Unit Price</span>
+										<span class="unit">($)</span>
+									</label>
+								</div>
+							</li>
+							<li id="field-scenario" class="field">
+								<div class="slide-text-input numerical-only">
+									<input id="scenario" name="scenario" type="text" pattern="\d*" placeholder="Ex. 15"/>
+									<label>
+										<span class="description">Scenario</span>
+										<span class="unit">(%)</span>
+									</label>
+								</div>
+							</li>
+						</ul>
+						<button id="calculate">Calculate</button>
+					</div>
+					<div class="results">
+						<a id="logo" class="reversed" href="http://mshermandevelopment.com"><img src="images/logo-button.png"></a>
+						<button id="back-button"><img src="images/back-button.png"></button>
+						<div id="explanation">
+							<p>
+								Product: <span class="explanation-product highlight"></span><br/>
+								Reimbursement type: <span class="explanation-reason highlight"></span><br/>
+								Scenario: <span class="explanation-scenario highlight"></span><br/>
+								Shipment Weight: <span class="explanation-shipment-weight highlight"></span><br/>
+								Unit price: <span class="explanation-unit-price highlight"></span>
+							</p>
+							<p>
+								Reimbursement total: <span id="reimbursement-total"></span>
+							</p>
+						</div>
+						<div id="details">
+							<h3>Explanation</h3>
+							<p class="details">
+								Maximum allowed <span class="explanation-reason"></span> for a <span class="explanation-product"></span> order is <span class="explanation-allowance"></span>.<br>
+								Reimburse <span class="explanation-beyond"></span> of any amount that exceeds the <span class="explanation-reason"></span> allowance.
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
