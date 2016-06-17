@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <!-- https://github.com/sher-mon -->
+    <title>Reimbursement Calculator</title>
+    <meta name="description" content="Reimbursement Calculator"/>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" type="text/css" href="css/layout.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.5/marked.min.js"></script>
+    <script src="js/jquery-1.12.1.min.js"></script>
+    <script src="js/reactdata.js"></script>
+    <script src="js/reactinit.js"></script>
+    <script src="js/functions.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/layout.css">
+  </head>
+  <body>
+    <div id="container"></div>
+    <script type="text/babel">
+    var App = React.createClass({
+        render: function(){
+            return (
+                <div class="app">
+                    <SwivelPanel field_data={this.props.field_data}/>
+                </div>
+            );
+        },
+        componentDidMount: function() {
+            $(document).ready(function() {
+                //Todo: Pull ReactInit() functionality into React Components
+                ReactInit();
+            });
+        }
+    });
+    var SwivelPanel = React.createClass({
+        render: function(){
+            return (
+                <div className="swivel-panel">
+                    <div className="swivel">
+                        <Calculator field_data={this.props.field_data}/>
+                        <Results/>
+                    </div>
+                </div>
+            );
+        }
+    });
+    var Calculator = React.createClass({
+        render: function(){
+            return (
+                <div className="calculator">
+                    <a id="logo" href="http://mshermandevelopment.com"><img src={"images/logo-button.png"}/></a>
+                    <h1>Reimbursement Calculator</h1>
+                    <AdminPanel/>
+                    <h2>Details</h2>
+                    <button id="settings-gear"><img src={"images/settings-gear.png"}/></button>
+                    <Fields field_data={this.props.field_data}/>
+                    <button id="calculate">Calculate</button>
+                </div>
+            );
+        }
+    });
+    var AdminPanel = React.createClass({
+        render: function(){
+            return (
+                <div id="admin-panel">
+                    <AddProductPanel/>
+                    <ProductList/>
+                </div>
+            );
+        }
+    });
+    var AddProductPanel = React.createClass({
+        render: function(){
+            return (
+                <div id="add-product-panel">
+                    <p>Add a new product</p>
+                    <input id="new-product-type" name="new-product-type" type="text" placeholder="Ex. Corn"/>
+                    <button id="add-product">Add</button>
+                </div>
+            );
+        }
+    });
+    var ProductList = React.createClass({
+        render: function(){
+            return (
+                <ul id="product-list">
+                </ul>
+            );
+        }
+    });
+    var Fields = React.createClass({
+        render: function(){
+            var dropdownfields = this.props.field_data.map(function(field, i){
+                if (field.type == "select")
+                {
+                    return (<DropDownField input_id={field.input_id} field_values={field.field_values} description={field.description} key={i}/>);
+                }
+                if (field.type == "input")
+                {
+                    return (<TextInputField input_id={field.input_id} label_data={field.label_data} key={i}/>);
+                }
+            });
+            return (
+                <ul id="fields">
+                    {dropdownfields}
+                </ul>
+            );
+        }
+    });
+    var DropDownField = React.createClass({
+        render: function(){            
+            var dropdownAttributes = buildDropDownAttributes(this.props.input_id);
+            return (
+                <li id={dropdownAttributes.getFieldId()} className="field">
+                    <input id={dropdownAttributes.getInputId()} type="hidden"/>
+                    <DropDownFieldOptions input_id={dropdownAttributes.getInputId()} interface_id={dropdownAttributes.getInterfaceId()} field_values={this.props.field_values} description={this.props.description}/>
+                </li>  
+            );
+        }
+    });
+    var DropDownFieldOptions = React.createClass({
+        render: function(){            
+            var fieldoptions = this.props.field_values.map(function(field_value, i){
+                if (i)
+                {
+                    return (                   
+                        <li data-value={i} key={i}>
+                            {field_value}
+                        </li>
+                    );
+                }
+            });
+            
+            return (
+                 <ul id={this.props.interface_id} className="select-interface" data-status="closed" data-connect={this.props.input_id}>
+                     <li data-value="0" className="selected">{this.props.description}<span className="dropdown-arrow"><img src={"images/dropdown-arrow.png"}/></span></li>
+                     {fieldoptions}
+                 </ul>
+            );
+        }
+    });
+    var TextInputField = React.createClass({
+        render: function(){
+            var textInputAttributes = buildTextInputAttributes(this.props.input_id);
+            return (
+                <li id={textInputAttributes.getFieldId()} className="field">
+                    <div className="slide-text-input numerical-only">
+                        <input id={textInputAttributes.getInputId()} name={textInputAttributes.getInputId()} type="text" pattern="\d*" placeholder="Ex. 50"/>
+                        <TextInputFieldLabel label_data={this.props.label_data}/>
+                    </div>
+                </li>
+            );
+        }
+    });
+    var TextInputFieldLabel = React.createClass({
+        render: function(){
+            return (
+                <label>
+                    <span className="description">{this.props.label_data.description}</span>
+                    <span className="unit">({this.props.label_data.unit})</span>
+                </label>
+            );
+        }
+    });
+    var Results = React.createClass({
+        render: function(){
+            return (
+                <div className="results">
+                    <a id="logo" href="http://mshermandevelopment.com"><img src={"images/logo-button.png"}/></a>
+                    <button id="back-button"><img src={"images/back-button.png"}/></button>
+                    <Explanation/>
+                    <Details/>
+                </div>
+            );
+        }
+    });
+    var Explanation = React.createClass({
+        render: function(){
+            return (
+                <div id="explanation">
+                    <p>
+                        Product: <span className="explanation-product highlight"></span><br/>
+                        Reimbursement type: <span className="explanation-reason highlight"></span><br/>
+                        Scenario: <span className="explanation-scenario highlight"></span><br/>
+                        Shipment Weight: <span className="explanation-shipment-weight highlight"></span><br/>
+                        Unit price: <span className="explanation-unit-price highlight"></span>
+                    </p>
+                    <p>
+                        Reimbursement total: <span id="reimbursement-total"></span>
+                    </p>
+                </div>
+            );
+        }
+    });
+    var Details = React.createClass({
+        render: function(){
+            return (
+                <div id="details">
+                    <h3>Explanation</h3>
+                    <p>
+                        Maximum allowed <span className="explanation-reason"></span> for a <span className="explanation-product"></span> order is <span className="explanation-allowance"></span>.<br/>
+                        Reimburse <span className="explanation-beyond"></span> of any amount that exceeds the <span className="explanation-reason"></span> allowance.
+                    </p>
+                </div>
+            );
+        }
+    });
+    ReactDOM.render(
+        <App field_data={field_data}/>,
+        document.getElementById("container")
+    );
+    </script>
+  </body>
+</html>

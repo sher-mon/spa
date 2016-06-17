@@ -25,7 +25,7 @@
  + Calculate reimbursement [Done]
  + Populate explanation/details [Done]
  + Format price [Done]
-- React [Todo]
+- React [In progress...]
 
 ### Responsive Design
 - Provide simple, lightweight tweaks for mobile/tablet [Todo]
