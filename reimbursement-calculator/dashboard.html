@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- https://github.com/sher-mon -->
+		<title>Reimbursement Calculator Development Dashboard</title>
+		<meta name="description" content="Reimbursement Calculator Development Dashboard">
+		<meta charset="utf-8">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+		<script>
+		$(document).ready(function(){
+			jQuery("#logo").addClass("hover");
+		});
+		</script>	
+		<style type="text/css">
+		/* CSS Reset */
+		html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-collapse:collapse;border-spacing:0}
+		/* Clearfix */
+		.clear:before, .clear:after {content: " "; display: table;}
+		.clear:after {clear: both;}
+		/* Preferred box sizing  */
+		html {box-sizing: border-box;}
+		*, *:before, *:after {box-sizing: inherit;}
+		a {text-decoration: none; color: #039; outline: 0;}
+		body {position: relative; font-family: "Helvetica Neue"; color: #222328; padding: 20px 0;}
+		h1 {font-size: 24px; font-weight: bold; text-align: center;}
+		h2 {font-size: 20px; text-align: center; color: #444; margin: 6px 0;}
+		#logo {display: block; width: 80px; height: 80px; margin: 0 auto 12px; transition: 1.2s; -webkit-transition: 1.2s; -moz-transition: 1.2s;}
+		#logo.hover {transform: rotateY(360deg); -webkit-transform: rotateY(360deg); -moz-transform: rotateY(360deg);}
+		#logo img {width: 100%;}
+		#container {position: relative; width: 90%; margin: 10px auto; padding: 10px;}
+		ul {float: left; width: 31%; margin: 1%; text-align: center;}
+		ul li {display: block; margin: 10px;}
+		ul li h2 {font-size: 20px; font-weight: bold;}
+		ul li a {font-size: 20px;}
+		ul li span {font-size: 20px;}
+		ul li p {font-size: 15px; color: #555;}
+		#app-image {text-align: center; margin: 20px 0; border: 2px solid #fff; transition: 1s;}
+		#app-image img {border: 2px solid #ccc; outline: 0;}
+		#app-image img:hover {border: 2px solid #039;}
+		</style>
+	</head>
+	<body>
+		<div id="logo"><img src="images/logo-button.png"></div>
+		<h1>Reimbursement Calculator Development Dashboard</h1>
+		<h2>Developed by Mike Sherman</h2>
+		<div id="app-image"><a href="index.html"><img src="images/reimbursement-calculator.jpg"/></a></div>
+		<div id="container" class="clear">
+			<ul>
+				<li>
+					<h2>Code Specs</h2>
+				</li>
+				<li>
+					<span>HTML</span><br/>
+					<p>numeric keypad entry on mobile</p>
+				</li>
+				<li>
+					<span>SASS<span>/CSS3</span><br/>
+					<p>media queries, transitions, transforms</p>
+				</li>
+				<li>
+					<span>Javascript, VanillaJS, jQuery</span>
+				</li>
+				<li>
+					<span>React</span>
+				</li>
+			</ul>
+			<ul>
+				<li>
+					<h2>Components</h2>
+				</li>
+				<li>
+					<a href="swivel-interface.html">Swivel Interface</a>
+				</li>
+				<li>
+					<a href="icons-buttons.html">Icons &amp; Buttons</a>
+				</li>
+				<li>
+					<a href="dropdowns.html">Dropdowns</a>
+				</li>
+				<li>
+					<a href="text-inputs.html">Text Inputs</a>
+				</li>
+				<li>
+					<a href="explanation-details.html">Explanation/Details</a>
+				</li>
+			</ul>
+			<ul>
+				<li>
+					<h2>App</h2>
+				</li>
+				<li>
+					<a href="index.html">HTML Markup</a>
+				</li>
+				<li>
+					<a href="react.html">React</a>
+					<p>(js functionality conversion in progress...)</p>
+				</li>
+			</ul>
+		</div>
+	</body>
+</html>
